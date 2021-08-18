@@ -38,6 +38,7 @@ namespace CatWorx.BadgeMaker
         {
             List<Employee> employees = GetEmployees();
             Util.PrintEmployees(employees);
+            Util.MakeCSV(employees);
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 
 namespace CatWorx.BadgeMaker
@@ -12,6 +13,14 @@ namespace CatWorx.BadgeMaker
                 string template = "{0,-10}\t{1,-20}\t{2}";
                 // each item in employees is now an Employee instance
                 Console.WriteLine(String.Format(template, employees[i].GetId(), employees[i].GetName(), employees[i].GetPhotoUrl()));
+            }
+        }
+        public static void MakeCSV(List<Employee> employees)
+        {
+            // check for or create data directory
+            if (!Directory.Exists("data"))
+            {
+                Directory.CreateDirectory("data");
             }
         }
     }
