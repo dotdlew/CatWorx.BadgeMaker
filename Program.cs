@@ -25,7 +25,7 @@ namespace CatWorx.BadgeMaker
                 string lastName = Console.ReadLine();
                 Console.Write("Enter ID: ");
                 int id = Int32.Parse(Console.ReadLine());
-                Console.Write("Enter Photo URL:");
+                Console.Write("Enter Photo URL: ");
                 string photoUrl = Console.ReadLine();
                 // create new Employee instance
                 Employee currentEmployee = new Employee(firstName, lastName, id, photoUrl);

@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Net;
 using System.Drawing;
 using System.Collections.Generic;
 
@@ -23,6 +24,7 @@ namespace CatWorx.BadgeMaker
             {
                 Directory.CreateDirectory("data");
             }
+            // instance of StreamWriter is disposed after code in the block has run
             using (StreamWriter file = new StreamWriter("data/employees.csv"))
             {
                 file.WriteLine("ID,Name,PhotoUrl");
@@ -59,6 +61,16 @@ namespace CatWorx.BadgeMaker
             int EMPLOYEE_ID_START_Y = 690;
             int EMPLOYEE_ID_WIDTH = BADGE_WIDTH;
             int EMPLOYEE_ID_HEIGHT = 100;
+
+            // instance of WebClient is disposed after code in the block has run
+            using (WebClient client = new WebClient())
+            {
+                for (int i = 0; i < employees.Count; i++)
+                {
+                    Image photo = Image.FromStream(client.OpenRead(employees[i].GetPhotoUrl()));
+                    photo.Save("data/employeeBadge.png");
+                }
+            }
 
             // Create image
             Image newImage = Image.FromFile("assets/badge.png");
