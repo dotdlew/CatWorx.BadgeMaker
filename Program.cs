@@ -34,19 +34,10 @@ namespace CatWorx.BadgeMaker
             }
             return employees;
         }
-        static void PrintEmployees(List<Employee> employees)
-        {
-            for (int i = 0; i < employees.Count; i++)
-            {
-                string template = "{0,-10}\t{1,-20}\t{2}";
-                // each item in employees is now an Employee instance
-                Console.WriteLine(String.Format(template, employees[i].GetId(), employees[i].GetName(), employees[i].GetPhotoUrl()));
-            }
-        }
         static void Main(string[] args)
         {
             List<Employee> employees = GetEmployees();
-            PrintEmployees(employees);
+            Util.PrintEmployees(employees);
         }
     }
 }
