@@ -24,7 +24,14 @@ namespace CatWorx.BadgeMaker
             }
             using (StreamWriter file = new StreamWriter("data/employees.csv"))
             {
-                
+                file.WriteLine("ID,Name,PhotoUrl");
+                // add employees to file
+                for (int i = 0; i < employees.Count; i++)
+                {
+                    string template = "{0},{1},{2}";
+                    // each item in employees is now an Employee instance
+                    file.WriteLine(String.Format(template, employees[i].GetId(), employees[i].GetName(), employees[i].GetPhotoUrl()));
+                }
             }
         }
     }
