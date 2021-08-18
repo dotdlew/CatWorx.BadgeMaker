@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Drawing;
 using System.Collections.Generic;
 
 namespace CatWorx.BadgeMaker
@@ -33,6 +34,11 @@ namespace CatWorx.BadgeMaker
                     file.WriteLine(String.Format(template, employees[i].GetId(), employees[i].GetName(), employees[i].GetPhotoUrl()));
                 }
             }
+        }
+        public static void MakeBadges(List<Employee> employees)
+        {
+            // Create image
+            Image newImage = Image.FromFile("badge.png");
         }
     }
 }
