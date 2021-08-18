@@ -68,13 +68,14 @@ namespace CatWorx.BadgeMaker
                 for (int i = 0; i < employees.Count; i++)
                 {
                     Image photo = Image.FromStream(client.OpenRead(employees[i].GetPhotoUrl()));
-                    photo.Save("data/employeeBadge.png");
+                    Image background = Image.FromFile("assets/badge.png");
+                    Image badge = new Bitmap(BADGE_WIDTH, BADGE_HEIGHT);
+                    Graphics graphic = Graphics.FromImage(badge);
+                    graphic.DrawImage(background, new Rectangle(0, 0, BADGE_WIDTH, BADGE_HEIGHT));
+                    graphic.DrawImage(photo, new Rectangle(PHOTO_START_X, PHOTO_START_Y, PHOTO_WIDTH, PHOTO_HEIGHT));
+                    // badge.Save("data/employeeBadge.png");
                 }
             }
-
-            // Create image
-            Image newImage = Image.FromFile("assets/badge.png");
-            newImage.Save("data/employeeBadge.png");
         }
     }
 }
