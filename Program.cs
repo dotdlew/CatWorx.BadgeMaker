@@ -7,16 +7,13 @@ namespace CatWorx.BadgeMaker
     {
         static void Main(string[] args)
         {
-            List<string> employees = new List<string>() { "adam", "amy" };
+            List<Employee> employees = new List<Employee>();
 
-            employees.Add("barbara");
-            employees.Add("billy");
+            // employees = PeopleFetcher.GetEmployees();
+            employees = PeopleFetcher.GetFromApi();
 
-            for (int i = 0; i < employees.Count; i++)
-            {
-                Console.WriteLine(employees[i]);
-            }
-
+            Util.MakeCSV(employees);
+            Util.MakeBadges(employees);
         }
     }
 }
