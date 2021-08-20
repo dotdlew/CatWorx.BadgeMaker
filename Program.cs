@@ -9,7 +9,8 @@ namespace CatWorx.BadgeMaker
         {
             List<Employee> employees = new List<Employee>();
 
-            employees = PeopleFetcher.GetEmployees();
+            // employees = PeopleFetcher.GetEmployees();
+            employees = PeopleFetcher.GetFromApi();
 
             Util.MakeCSV(employees);
             Util.MakeBadges(employees);
